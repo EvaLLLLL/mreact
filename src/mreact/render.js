@@ -2,7 +2,7 @@
  * render
  */
 
-const render = (element, parentDom) => {
+export const render = (element, parentDom) => {
   const { type, props } = element;
 
   const isTextElement = type === "TEXT_ELEMENT";
