@@ -4,7 +4,11 @@
 
 const render = (element, parentDom) => {
   const { type, props } = element;
-  const dom = document.createElement(type);
+
+  const isTextElement = type === "TEXT_ELEMENT";
+  const dom = isTextElement
+    ? document.createTextNode("")
+    : document.createElement(type);
 
   const isListener = (name) => name.startsWith("on");
 
