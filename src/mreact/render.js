@@ -2,18 +2,29 @@
  * render
  */
 
-export const render = (element, container) => {
-  const dom =
-    element.type === "TEXT_ELEMENT"
-      ? document.createTextNode("")
-      : document.createElement(element.type);
+const render = (element, parentDom) => {
+  const { type, props } = element;
+  const dom = document.createElement(type);
 
-  Object.keys(element.props)
-    .filter((key) => key !== "children")
+  const isListener = (name) => name.startsWith("on");
+
+  Object.keys(props)
+    .filter(isListener)
     .forEach((name) => {
-      dom[name] = element.props[name];
+      const eventType = name.toLowerCase().substring(2);
+      dom.addEventListener(eventType, props[name]);
     });
 
-  element.props.children.forEach((child) => render(child, dom));
-  container.appendChild(dom);
+  const isAttribute = (name) => !isListener(name) && name !== "children";
+
+  Object.keys(props)
+    .filter(isAttribute)
+    .forEach((name) => {
+      dom[name] = props.name;
+    });
+
+  const childElement = props.children || [];
+  childElement.forEach((childElement) => render(childElement, dom));
+
+  parentDom.appendChild(dom);
 };
