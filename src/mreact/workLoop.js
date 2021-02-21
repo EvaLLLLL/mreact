@@ -2,19 +2,19 @@
  * workLoop
  */
 
-let nextUnitOfWork = null
+let nextUnitOfWork = null;
 
 const workLoop = (deadline) => {
-  let shouldYield = false
+  let shouldYield = false;
 
   while (nextUnitOfWork && !shouldYield) {
-    nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
-    shouldYield = deadline.timeRemaining() < 1
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
+    shouldYield = deadline.timeRemaining() < 1;
   }
 
-  requestIdleCallback(workLoop)
-}
+  requestIdleCallback(workLoop);
+};
 
-const performUnitOfWork = nextUnitOfWork => {
+const performUnitOfWork = (nextUnitOfWork) => {
   // TODO
-}
+};

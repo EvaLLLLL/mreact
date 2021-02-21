@@ -7,20 +7,19 @@ export const createElement = (type, props, ...children) => {
     type,
     props: {
       ...props,
-      children: children.map(child =>
-        typeof child === "object" ?
-          child : createTextElement(child))
-    }
-  }
-}
-
+      children: children.map((child) =>
+        typeof child === "object" ? child : createTextElement(child)
+      ),
+    },
+  };
+};
 
 const createTextElement = (text) => {
   return {
     type: "TEXT_ELEMENT",
     props: {
       nodeValue: text,
-      children: []
-    }
-  }
-}
+      children: [],
+    },
+  };
+};

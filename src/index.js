@@ -2,4 +2,4 @@
  * index
  */
 
-import './test'
+import "./test";

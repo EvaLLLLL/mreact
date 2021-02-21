@@ -2,5 +2,8 @@
   "name": "mreact",
   "version": "1.0.0",
   "main": "src/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
